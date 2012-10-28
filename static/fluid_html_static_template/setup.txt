@@ -1,0 +1,17 @@
+plugin.tx_fluidhtml_pi1 {
+
+	layoutRootPath = fileadmin/templates/fluid/layout/
+	partialRootPath = fileadmin/templates/fluid/partial/
+	format = html
+	variables {
+		# Each variable is a cObj with a TYPE and CONF, rendered with cObjGetSingle
+	}
+	stdWrap.wrap = <!-- FLUIDHTML CONTENT ELEMENT START -->|<!-- FLUIDHTML CONTENT ELEMENT END -->
+
+}
+
+tt_content.fluidhtml_pi1 {
+	# Don't render a header
+	10 >
+}
+

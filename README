@@ -1,0 +1,15 @@
+This TYPO3 plugin adds a content element which renders specified Fluid template content. This offers many advantages over standard HTML content elements, some of the important ones:
+
+# Real, system generated links can be added to HTML content
+
+# Images can be resized within HTML
+
+# Anything that you can do with a Viewhelper, you can do here
+
+Some things that this doesn't have:
+
+# A controller
+
+# A way to specify variable values
+
+The primary purpose of this is to replace the HTML content element and its lack of flexibility.
