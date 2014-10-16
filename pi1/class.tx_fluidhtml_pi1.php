@@ -27,8 +27,7 @@
  * Hint: use extdeveval to insert/update function index above.
  */
 
-require_once(PATH_tslib.'class.tslib_pibase.php');
-
+if (!class_exists('tslib_pibase')) require_once(PATH_tslib . 'class.tslib_pibase.php');
 
 /**
  * Plugin 'Fluid HTML' for the 'fluidhtml' extension.
