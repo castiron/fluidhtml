@@ -27,8 +27,6 @@
  * Hint: use extdeveval to insert/update function index above.
  */
 
-if (!class_exists('tslib_pibase')) require_once(PATH_tslib . 'class.tslib_pibase.php');
-
 /**
  * Plugin 'Fluid HTML' for the 'fluidhtml' extension.
  *
@@ -36,7 +34,7 @@ if (!class_exists('tslib_pibase')) require_once(PATH_tslib . 'class.tslib_pibase
  * @package	TYPO3
  * @subpackage	tx_fluidhtml
  */
-class tx_fluidhtml_pi1 extends tslib_pibase {
+class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 	var $prefixId      = 'tx_fluidhtml_pi1';		// Same as class name
 	var $scriptRelPath = 'pi1/class.tx_fluidhtml_pi1.php';	// Path to this script relative to the extension dir.
 	var $extKey        = 'fluidhtml';	// The extension key.
@@ -52,7 +50,7 @@ class tx_fluidhtml_pi1 extends tslib_pibase {
 	function main($content, $conf)	{
 
 			// check if the needed extensions are installed
-		if (!t3lib_extMgm::isLoaded('fluid')) {
+		if (!TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid')) {
 			return 'You need to install "Fluid" in order to use the FLUIDTEMPLATE content element';
 		}
 
@@ -60,7 +58,7 @@ class tx_fluidhtml_pi1 extends tslib_pibase {
 		 * 1. initializing Fluid StandaloneView and setting configuration parameters
 		 **/
 		try {
-			$view = t3lib_div::makeInstance('Tx_Fluid_View_StandaloneView');
+			$view = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Fluid_View_StandaloneView');
 				// fetch the Fluid template
 			$file = isset($conf['file.'])
 				? $this->cObj->stdWrap($conf['file'], $conf['file.'])
@@ -77,7 +75,7 @@ class tx_fluidhtml_pi1 extends tslib_pibase {
 				? $this->cObj->stdWrap($conf['layoutRootPath'], $conf['layoutRootPath.'])
 				: $conf['layoutRootPath'];
 			if($layoutRootPath) {
-				$layoutRootPath = t3lib_div::getFileAbsFileName($layoutRootPath);
+				$layoutRootPath = TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($layoutRootPath);
 				$view->setLayoutRootPath($layoutRootPath);
 			}
 
@@ -86,7 +84,7 @@ class tx_fluidhtml_pi1 extends tslib_pibase {
 				? $this->cObj->stdWrap($conf['partialRootPath'], $conf['partialRootPath.'])
 				: $conf['partialRootPath'];
 			if($partialRootPath) {
-				$partialRootPath = t3lib_div::getFileAbsFileName($partialRootPath);
+				$partialRootPath = TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($partialRootPath);
 				$view->setPartialRootPath($partialRootPath);
 			}
 
