@@ -58,7 +58,7 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 		 * 1. initializing Fluid StandaloneView and setting configuration parameters
 		 **/
 		try {
-			$view = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Fluid_View_StandaloneView');
+			$view = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
 				// fetch the Fluid template
 			$file = isset($conf['file.'])
 				? $this->cObj->stdWrap($conf['file'], $conf['file.'])
