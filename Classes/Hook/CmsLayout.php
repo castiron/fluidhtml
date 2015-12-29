@@ -7,8 +7,8 @@ class PageLayoutViewDrawItemHook implements \TYPO3\CMS\Backend\View\PageLayoutVi
 
 	public function preProcess(\TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row)
 	{
-		$objectManager = GeneralUtility::makeInstance('\\TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
-		$this->fileRepository = $objectManager->get('\\TYPO3\\CMS\\Core\\Resource\\FileRepository');
+		$objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+		$this->fileRepository = $objectManager->get('TYPO3\\CMS\\Core\\Resource\\FileRepository');
 		$this->pageRepository = $objectManager->get('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 		$this->ffService = $objectManager->get('TYPO3\\CMS\\Extbase\\Service\\FlexFormService');
 
