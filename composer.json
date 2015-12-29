@@ -1,9 +1,14 @@
 {
-	"name": "castiron/fluidhtml",
-	"type": "typo3-cms-extension",
-	"description": "Adds a TYPO3 content element that allows the use of Fluid templates",
-	"homepage": "https://github.com/castiron/fluidhtml.git",
-	"license": ["GPL-2.0+"],
-	"keywords": ["TYPO3 CMS"]
+  "name": "castiron/fluidhtml",
+  "type": "typo3-cms-extension",
+  "description": "Adds a TYPO3 content element that allows the use of Fluid templates",
+  "homepage": "https://github.com/castiron/fluidhtml.git",
+  "license": ["GPL-2.0+"],
+  "keywords": ["TYPO3 CMS"],
+  "autoload": {
+    "psr-4": {
+      "CIC\\Fluidhtml\\": "Classes"
+    }
+  }
 }
 
