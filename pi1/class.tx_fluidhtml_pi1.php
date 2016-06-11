@@ -21,11 +21,7 @@
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-/**
- * [CLASS/FUNCTION INDEX of SCRIPT]
- *
- * Hint: use extdeveval to insert/update function index above.
- */
+
 
 /**
  * Plugin 'Fluid HTML' for the 'fluidhtml' extension.
@@ -34,12 +30,12 @@
  * @package	TYPO3
  * @subpackage	tx_fluidhtml
  */
-class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
+class tx_fluidhtml_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 	var $prefixId      = 'tx_fluidhtml_pi1';		// Same as class name
 	var $scriptRelPath = 'pi1/class.tx_fluidhtml_pi1.php';	// Path to this script relative to the extension dir.
 	var $extKey        = 'fluidhtml';	// The extension key.
 	var $pi_checkCHash = true;
-	
+
 	/**
 	 * The main method of the PlugIn
 	 *
@@ -50,7 +46,7 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 	function main($content, $conf)	{
 
 			// check if the needed extensions are installed
-		if (!TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid')) {
+		if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid')) {
 			return 'You need to install "Fluid" in order to use the FLUIDTEMPLATE content element';
 		}
 
@@ -58,7 +54,7 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 		 * 1. initializing Fluid StandaloneView and setting configuration parameters
 		 **/
 		try {
-			$view = TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('Tx_Fluid_View_StandaloneView');
+			$view = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Fluid\View\StandaloneView');
 				// fetch the Fluid template
 			$file = isset($conf['file.'])
 				? $this->cObj->stdWrap($conf['file'], $conf['file.'])
@@ -75,7 +71,7 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 				? $this->cObj->stdWrap($conf['layoutRootPath'], $conf['layoutRootPath.'])
 				: $conf['layoutRootPath'];
 			if($layoutRootPath) {
-				$layoutRootPath = TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($layoutRootPath);
+				$layoutRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($layoutRootPath);
 				$view->setLayoutRootPath($layoutRootPath);
 			}
 
@@ -84,7 +80,7 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 				? $this->cObj->stdWrap($conf['partialRootPath'], $conf['partialRootPath.'])
 				: $conf['partialRootPath'];
 			if($partialRootPath) {
-				$partialRootPath = TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($partialRootPath);
+				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($partialRootPath);
 				$view->setPartialRootPath($partialRootPath);
 			}
 
@@ -161,13 +157,5 @@ class tx_fluidhtml_pi1 extends TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 		return $theValue;
 
 	}
-	
+
 }
-
-
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/fluidhtml/pi1/class.tx_fluidhtml_pi1.php'])	{
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/fluidhtml/pi1/class.tx_fluidhtml_pi1.php']);
-}
-
-?>
