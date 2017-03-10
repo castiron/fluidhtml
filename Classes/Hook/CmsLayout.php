@@ -23,12 +23,18 @@ class PageLayoutViewDrawItemHook implements \TYPO3\CMS\Backend\View\PageLayoutVi
 	}
 
 	protected function fluidHtmlTeaser($header, \TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row) {
-		$headerContent = '<strong>' . htmlspecialchars($header) . '</strong><br />';
+        $headerContent = '<strong>' . htmlspecialchars($header) . '</strong><br />' . '<strong>' . $row['header'] . '</strong>';
+        $input = strip_tags($row['bodytext']);
+        $input = GeneralUtility::fixed_lgd_cs($input, 1500);
+        $input = nl2br(htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8', FALSE));
+        $input = preg_replace('/\r\n\s+<br \/>/','',$input);
+        $input = (strlen($input) > 100) ? substr($input, 0, 100) . '<br /> ...' : $input;
+        $itemContent = $input;
 		$drawItem = false;
 	}
 
 	protected function htmlTeaser($header, \TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row) {
-		$headerContent = '<strong>' . htmlspecialchars($header) . '</strong><br />';
+        $headerContent = '<strong>' . htmlspecialchars($header) . '</strong><br />' . '<strong>' . $row['header'] . '</strong>';
 		$input = strip_tags($row['bodytext']);
 		$input = GeneralUtility::fixed_lgd_cs($input, 1500);
 		$input = nl2br(htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8', FALSE));
