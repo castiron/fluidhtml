@@ -72,21 +72,21 @@ class tx_fluidhtml_pi1 extends AbstractPlugin {
 			$view->setTemplateSource($source);
 
 				// override the default layout path via typoscript
-			$layoutRootPath = isset($conf['layoutRootPath.'])
-				? $this->cObj->stdWrap($conf['layoutRootPath'], $conf['layoutRootPath.'])
-				: $conf['layoutRootPath'];
+			$layoutRootPath = isset($conf['layoutRootPaths.'])
+				? $this->cObj->stdWrap($conf['layoutRootPaths'], $conf['layoutRootPaths.'])
+				: $conf['layoutRootPaths'];
 			if($layoutRootPath) {
 				$layoutRootPath = GeneralUtility::getFileAbsFileName($layoutRootPath);
-				$view->setLayoutRootPath($layoutRootPath);
+				$view->setLayoutRootPaths($layoutRootPath);
 			}
 
 				// override the default partials path via typoscript
-			$partialRootPath = isset($conf['partialRootPath.'])
-				? $this->cObj->stdWrap($conf['partialRootPath'], $conf['partialRootPath.'])
-				: $conf['partialRootPath'];
+			$partialRootPath = isset($conf['partialRootPaths.'])
+				? $this->cObj->stdWrap($conf['partialRootPaths'], $conf['partialRootPaths.'])
+				: $conf['partialRootPaths'];
 			if($partialRootPath) {
 				$partialRootPath = GeneralUtility::getFileAbsFileName($partialRootPath);
-				$view->setPartialRootPath($partialRootPath);
+				$view->setPartialRootPaths($partialRootPath);
 			}
 
 				// override the default format

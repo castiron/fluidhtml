@@ -1,7 +1,12 @@
 plugin.tx_fluidhtml_pi1 {
-
-	layoutRootPath = fileadmin/templates/fluid/layout/
-	partialRootPath = fileadmin/templates/fluid/partial/
+	layoutRootPaths {
+		0 = fileadmin/templates/fluid/layout/
+	}
+	partialRootPaths {
+		0 = fileadmin/templates/fluid/partial/
+	}
+	layoutRootPath < .layoutRootPaths.0
+	partialRootPath < .partialRootPaths.0
 	format = html
 	variables {
 		# Each variable is a cObj with a TYPE and CONF, rendered with cObjGetSingle
