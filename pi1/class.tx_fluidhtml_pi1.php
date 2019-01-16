@@ -72,7 +72,7 @@ class tx_fluidhtml_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 				: $conf['layoutRootPath'];
 			if($layoutRootPath) {
 				$layoutRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($layoutRootPath);
-				$view->setLayoutRootPath($layoutRootPath);
+				$view->setLayoutRootPaths([$layoutRootPath]);
 			}
 
 				// override the default partials path via typoscript
@@ -81,7 +81,7 @@ class tx_fluidhtml_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 				: $conf['partialRootPath'];
 			if($partialRootPath) {
 				$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($partialRootPath);
-				$view->setPartialRootPath($partialRootPath);
+				$view->setPartialRootPaths([$partialRootPath]);
 			}
 
 				// override the default format
