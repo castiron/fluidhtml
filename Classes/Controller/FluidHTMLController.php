@@ -1,4 +1,5 @@
-<?php
+<?php namespace CIC\Fluidhtml\Controller;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -30,22 +31,17 @@
  * @package	TYPO3
  * @subpackage	tx_fluidhtml
  */
-class tx_fluidhtml_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
-	var $prefixId      = 'tx_fluidhtml_pi1';		// Same as class name
-	var $scriptRelPath = 'pi1/class.tx_fluidhtml_pi1.php';	// Path to this script relative to the extension dir.
-	var $extKey        = 'fluidhtml';	// The extension key.
-	var $pi_checkCHash = true;
-
+class FluidHTMLController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * The main method of the PlugIn
 	 *
-	 * @param	string		$content: The PlugIn content
-	 * @param	array		$conf: The PlugIn configuration
 	 * @return	The content that is displayed on the website
 	 */
-	function main($content, $conf)	{
+	function indexAction()	{
+		$this->cObj = $this->configurationManager->getContentObject();
+		$conf = $this->configurationManager->getConfiguration('FullTypoScript')['plugin.']['tx_fluidhtml_pi1.'];
 
-			// check if the needed extensions are installed
+		// check if the needed extensions are installed
 		if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('fluid')) {
 			return 'You need to install "Fluid" in order to use the FLUIDTEMPLATE content element';
 		}
@@ -157,5 +153,4 @@ class tx_fluidhtml_pi1 extends \TYPO3\CMS\Frontend\Plugin\AbstractPlugin {
 		return $theValue;
 
 	}
-
 }
