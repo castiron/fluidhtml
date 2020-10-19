@@ -7,7 +7,7 @@ $TCA['tt_content']['types'][$_EXTKEY . '_pi1']['showitem'] = $TCA['tt_content'][
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
-	'_pi1',
+	'pi1',
 	'Fluid HTML',
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'ext_icon.gif'
 );
