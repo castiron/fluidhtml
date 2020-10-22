@@ -3,7 +3,7 @@ namespace CIC\Fluidhtml\Hook;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class PageLayoutViewDrawItemHook implements \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface {
+class CmsLayout implements \TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface {
 
 	public function preProcess(\TYPO3\CMS\Backend\View\PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row)
 	{

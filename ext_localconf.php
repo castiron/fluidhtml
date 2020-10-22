@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem'][$_EXTKEY.'_pi1'] =
-	CIC\Fluidhtml\Hook\PageLayoutViewDrawItemHook::class;
+	\CIC\Fluidhtml\Hook\CmsLayout::class;
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'CIC.'.$_EXTKEY, 'pi1',
